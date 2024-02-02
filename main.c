@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 {
 	size_t n = 0;
 
-	read_argc(argc);
+	validate_arguments(argc);
 	initialize_arguments();
 	get_stream(argv[1]);
 
