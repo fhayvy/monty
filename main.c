@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 		argument->line_number += 1;
 		tokenize_line();
 		get_instruction();
-		run_instructiin();
+		run_instruction();
 		free_tokens();
 	}
 	close_stream();
