@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * mod - the modulus if the number
+ * pstr - the modulus if the number
  * @stack: pointer to the stack
  * @line_number: line of the division number
  */
-void _div(stack_t **stack, unsigned int line_number)
+void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tem2;
 

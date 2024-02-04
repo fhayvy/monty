@@ -5,7 +5,7 @@
  * @stack: pointer to the stack
  * @line_number: line of the division number
  */
-void _div(stack_t **stack, unsigned int line_number)
+void rotr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tem,*last;
 
