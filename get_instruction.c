@@ -21,6 +21,11 @@ void get_instruction(void)
 	
 	if (argument->n_token == 0)
 		return;
+	if (argument->tokens[0][0] == '#')
+	{
+		argument->instruction->opcode = "nop";
+		argument->instruction->f = nop;
+	}
 
 	for (k = 0; instruction[k].opcode != NULL; k++)
 	{

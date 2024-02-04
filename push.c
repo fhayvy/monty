@@ -8,24 +8,38 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	if (arguments->n_tokens <= 1 || !(is_number(arguments->tokens[1])))
+	if (argument->n_token <= 1 || !(is_number(argument->tokens[1])))
 	{
-		free_arguments();
-		dprintf(2, "L%d: usage: push integer\n", line_number);
+		free_argument();
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	*stack = malloc(sizeof(stack_t));
 	if (*stack == NULL)
-		malloc_failed();
+		malloc_fail();
 	(*stack)->next = (*stack)->prev = NULL;
+	(*stack)->n = (int) atoi(argument->tokens[1]);
 
-	(*stack)->n = (int) atoi(arguments->tokens[1]);
-
-	if (arguments->head != NULL)
+	if (argument->head != NULL)
+		argument->head = *stack;
+	else
 	{
-		(*stack)->next = arguments->head;
-		arguments->head->prev = *stack;
+		if (argument->stack)
+		{
+			(*stack)->next = argument->head;
+			argument->head->prev = *stack;
+			argument->head = *stack;
+		}
+		else
+		{
+			stack_t *tem = argument->head;
+
+			while (tem->next)
+				tem = tem->next;
+			tem->next = *stack;
+			(*stack)->prev = tem;
+		}
+
 	}
-	arguments->head = *stack;
-	arguments->stack_length += 1;
+	argument->stack_length += 1;
 }

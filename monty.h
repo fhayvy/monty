@@ -53,6 +53,8 @@ typedef struct arg_s
 	char **tokens;
 	int n_token;
 	instruction_t *instruction;
+	int stack_length;
+	int stack;
 } arg_t;
 
 extern arg_t *argument;
@@ -60,6 +62,7 @@ extern arg_t *argument;
 
 
 void read_argc(int argc);
+void validate_arguments(int argc);
 void initialize_arguments();
 void malloc_fail();
 void get_stream(char *filename);
@@ -71,6 +74,9 @@ void tokenize_line(void);
 void get_instruction(void);
 void invalid_instruction(void);
 void free_tokens(void);
+void free_all_args(void);
+int is_number(char *str);
+void delete_stack_node(void);
 void close_stream(void);
 void run_instruction(void);
 void push(stack_t **stack, unsigned int line_number);
@@ -90,11 +96,5 @@ void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 void stack(stack_t **stack, unsigned int line_number);
 void queue(stack_t **stack, unsigned int line_number);
-
-
-
-
-
-
 
 #endif
